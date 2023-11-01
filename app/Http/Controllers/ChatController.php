@@ -34,9 +34,9 @@ class ChatController extends Controller
 
         $newChatMessage->save();
 
-        event(new NewChatMessage($newChatMessage, Auth::user()));
+//        event(new NewChatMessage($newChatMessage, Auth::user()));
 
-//        broadcast(new NewChatMessage($newChatMessage))->toOthers();
+        broadcast(new NewChatMessage($newChatMessage, Auth::user()))->toOthers();
 
         return $newChatMessage;
     }

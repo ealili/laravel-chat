@@ -30,19 +30,18 @@ export default {
             if (this.message === '') {
                 return;
             }
-            axios.post('chat/room/' + this.room.id + '/messages',
-                {
-                    message: this.message
-                })
+            axios.post('chat/room/' + this.room.id + '/messages', {
+                message: this.message
+            })
                 .then(response => {
-                    if (response.status == 201) {
-                        this.message = ''
+                    if (response.status === 201) {
+                        this.message = '';
                         this.$emit('messagesent');
                     }
                 })
                 .catch(error => {
-                    console.log(error)
-                })
+                    console.log(error);
+                });
         }
     }
 }
